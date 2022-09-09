@@ -1,40 +1,40 @@
-#loginSection .left-side .image {
+#registerSection .left-side .image {
     width: 100%;
     height: 100vh;
     margin: 0;
 }
 
-#loginSection .left-side img {
+#registerSection .left-side img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     background-color: #0D28A6;
 }
 
-#loginSection .right-side .rectangle {
+#registerSection .right-side .rectangle {
     background-color: #CFD4ED;
     height: 34px;
     width: 100px;
 } 
 
-#loginSection .right-side form {
+#registerSection .right-side form {
     width: 370px;
 }
 
-#loginSection .right-side form h1 {
+#registerSection .right-side form h1 {
     font-size: 24px;
     font-weight: 700;
 }
 
-#loginSection .right-side form label {
+#registerSection .right-side form label {
     font-size: 16px;
 }
 
-#loginSection .right-side form input::placeholder {
+#registerSection .right-side form input::placeholder {
     font-size: 14px;
 }
 
-#loginSection .right-side form button {
+#registerSection .right-side form button {
     background-color: #0D28A6;
     color: white;
     width: 100%;
