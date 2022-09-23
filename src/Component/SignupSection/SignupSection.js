@@ -1,5 +1,5 @@
 import React from "react";
-import './RegisterSection.css';
+import './SignupSection.css';
 
 
 function SignupSection() {
