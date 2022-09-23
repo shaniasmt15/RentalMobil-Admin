@@ -1,40 +1,40 @@
-#registerSection .left-side .image {
+#signupSection .left-side .image {
     width: 100%;
     height: 100vh;
     margin: 0;
 }
 
-#registerSection .left-side img {
+#signupSection .left-side img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     background-color: #0D28A6;
 }
 
-#registerSection .right-side .rectangle {
+#signupSection .right-side .rectangle {
     background-color: #CFD4ED;
     height: 34px;
     width: 100px;
 } 
 
-#registerSection .right-side form {
+#signupSection .right-side form {
     width: 370px;
 }
 
-#registerSection .right-side form h1 {
+#signupSection .right-side form h1 {
     font-size: 24px;
     font-weight: 700;
 }
 
-#registerSection .right-side form label {
+#signupSection .right-side form label {
     font-size: 16px;
 }
 
-#registerSection .right-side form input::placeholder {
+#signupSection .right-side form input::placeholder {
     font-size: 14px;
 }
 
-#registerSection .right-side form button {
+#signupSection .right-side form button {
     background-color: #0D28A6;
     color: white;
     width: 100%;

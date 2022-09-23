@@ -2,14 +2,14 @@ import React from "react";
 import './RegisterSection.css';
 
 
-function RegisterSection() {
+function SignupSection() {
     return (
-        <section id="registerSection">
+        <section id="signupSection">
             <div className='container-fluid'>
                 <div className='row min-vh-100'>
                     <div className="left-side col-lg-8 p-0 d-none d-lg-flex">
                         <div className='image'>
-                            <img src='/Assets/cover.png'></img>
+                            <img src='/Assets/cover.png' alt='cover image car'></img>
                         </div>
                     </div>
                     <div className="right-side col-lg-4 d-flex justify-content-center align-items-center">
@@ -24,7 +24,7 @@ function RegisterSection() {
                                 <label htmlFor="password">Password</label>
                                 <input type="password" className="form-control" id="password" placeholder="Masukkan Password"/>
                             </div>
-                            <button type="submit" className="btn mt-3">Sign In</button>
+                            <button type="submit" className="btn mt-3">Sign Up</button>
                             <p className="mt-4 d-flex justify-content-center">Already have an account?<a href="/login">Sign in here</a></p>
                         </form>
                     </div>
@@ -35,4 +35,4 @@ function RegisterSection() {
     )
 }
 
-export default RegisterSection;
+export default SignupSection;
