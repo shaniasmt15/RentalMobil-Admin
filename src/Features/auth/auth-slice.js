@@ -1,17 +1,23 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import authAPI from "./auth-api";
+import { setMessage } from "./message-slice";
 
 
 const user = JSON.parse(localStorage.getItem('user'));
 
 
 export const authLogin = createAsyncThunk('auth/login', 
-    async({email, password}) => {
+    async({email, password}, thunkAPI) => {
         try {
-            const response = await authAPI.login({email, password});
-            return {user: response};  
-        } catch (error) {
-            console.log(error);
+            const response = await authAPI.login({ email, password });
+            thunkAPI.dispatch(setMessage('berhasil login'));
+            return {user: response};            
+        } catch (err) {
+            const message = (
+                err.response && err.response.data && err.response.data.message) ||
+                err.message || err.toString();
+            thunkAPI.dispatch(setMessage(message));
+            return thunkAPI.rejectWithValue();
         }
     }
 )
@@ -33,7 +39,7 @@ const authSlice = createSlice({
             state.user = action.payload.user;
         },
         [authLogin.rejected] : (state, action) => {
-            state.isLoggedIn = null;
+            state.isLoggedIn = false;
             state.user = null;
         },
         [authLogout.fulfilled] : (state, action) => {

@@ -11,6 +11,7 @@ function LoginSection() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { isLoggedIn } = useSelector(state => state.auth);
+    const { message } = useSelector(state => state.message)
 
     const handleSubmit = async (values, actions) => {
         try {
@@ -91,8 +92,8 @@ function LoginSection() {
                                 />
                                 {formik.touched.password && formik.errors.password ? <div className="text-danger mt-1">{formik.errors.password}</div> : null}
                             </div>
+                            {message != 'berhasil login' && message != null ? <div className="alert alert-danger" role="alert">{message}</div> : null}
                             <button type="submit" className="btn mt-3">Sign In</button>
-                            <p className="mt-4 d-flex justify-content-center">Don’t have an account?<a href="/signup">Sign Up for Free</a></p>
                         </form>
                     </div>
                 </div>
