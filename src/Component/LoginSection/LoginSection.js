@@ -15,7 +15,7 @@ function LoginSection() {
 
     const handleSubmit = async (values, actions) => {
         try {
-            const login = await dispatch(authLogin(values));
+            dispatch(authLogin(values));
             actions.setSubmitting(false);
             actions.resetForm();
         } catch (error) {
