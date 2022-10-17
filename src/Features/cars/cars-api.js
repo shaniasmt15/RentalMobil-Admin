@@ -5,7 +5,7 @@ const API_URL = "https://bootcamp-rent-cars.herokuapp.com/admin/v2/";
 
 
 const getAllCars = async () => {
-    const response = await axios.get(`${API_URL}car`, getAuthHeader());
+    const response = await axios.get(`${API_URL}car`, { headers: getAuthHeader() });
     console.log(response);
     if(response.status!==200){}
     return response;
