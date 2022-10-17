@@ -4,7 +4,7 @@ export function getAuthHeader(){
     console.log(user)
     if(user && user.access_token){
         console.log(user.access_token)
-        return {Authorization :  `${user.access_token}` }
+        return {access_token :  `${user.access_token}` }
     }
     else{
         return {};
