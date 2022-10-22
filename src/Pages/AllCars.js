@@ -12,6 +12,7 @@ const AllCars = () => {
     const [loading, setLoading] = React.useState(true);
     
     const cars = useSelector((state) => state.cars);
+    console.log(cars)
 
     React.useEffect(()=>{
         if(cars && cars !== null) {
