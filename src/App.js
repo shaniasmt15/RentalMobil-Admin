@@ -1,18 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Login from './Pages/Login';
-import AllCars from './Pages/AllCars';
-import Dashboard from './Component/Dashboard/Dashboard';
+import logo from "./logo.svg";
+import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./Pages/Login";
+import AllCars from "./Component/AllCars";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import { CreateCars } from "./Pages/CreateCars";
+import { EditCars } from "./Pages/EditCars";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        
-        <Route path='/' element={<Dashboard />} />
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/cars' element={<AllCars/>} />
+        <Route path="/login" element={<Login />} />
+
+        <Route path="/" element={<Dashboard />}>
+          <Route path="/" element={<AllCars />} />
+          <Route path="add" element={ <CreateCars/>} />
+          <Route path="edit/:id" element={ <EditCars/>} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
