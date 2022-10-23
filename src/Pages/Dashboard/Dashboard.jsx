@@ -4,6 +4,7 @@ import "./Dashboard.css";
 
 function Dashboard() {
   const navigate = useNavigate();
+  
   return (
     <>
       <div className="container" id="top">
@@ -64,14 +65,13 @@ function Dashboard() {
           </div>
           <section className="main">
             <Outlet />
-            
           </section>
 
-          {/* <footer>
+          <footer>
                 <div className="copyright">
                     copyright &copy; 2022. all right reserved.
                 </div>
-            </footer> */}
+            </footer>
         </main>
       </div>
 

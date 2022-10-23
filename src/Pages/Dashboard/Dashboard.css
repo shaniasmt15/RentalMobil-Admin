@@ -1,38 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-}
-
-:root {
-    --blueColor: #008cff;
-    --whiteColor: #ffffff;
-    --lightGray: #f7f7f7;
-    --textColor: #4c5258;
-    --borderColor: #e4e4e4;
-    --smallBorder: .5rem;
-    --bigBorder: 2rem;
-    --fs13: 1.3rem;
-    --fs14: 1.4rem;
-    --fs15: 1.5rem;
-    --fs16: 1.6rem;
-    --fs20: 2rem;
-    --fs30: 3rem;
-}
-
-html {
-    font-size: 62.5%;
-    scroll-behavior: smooth;
-}
-
-body {
-    background-color: var(--lightGray);
-    color: var(--textColor);
-    position: relative;
-}
 
 h1,
 h2,
@@ -185,7 +150,7 @@ a {
 
 @media(min-width: 992px) {
     .content {
-        margin-left: 27rem;
+        margin-left: 10rem;
         padding-left: 0;
     }
 }
@@ -221,10 +186,10 @@ a {
     }
 }
 
-.content header .header-wrapper .header-left i {
+/* .content header .header-wrapper .header-left i {
     color: #697a8d;
     font-size: var(--fs20);
-}
+} */
 
 .content header .header-wrapper .header-left input {
     background-color: transparent;
@@ -237,9 +202,9 @@ a {
     border: none;
 }
 
-.content header .header-wrapper .header-left input::placeholder {
+/* .content header .header-wrapper .header-left input::placeholder {
     font-size: var(--fs15);
-}
+} */
 
 .content header .header-wrapper .header-left input:focus::placeholder {
     opacity: 0;
@@ -251,16 +216,16 @@ a {
     gap: 1rem;
 }
 
-.content header .header-wrapper .header-right .star-container {
+/* .content header .header-wrapper .header-right .star-container {
     display: flex;
     align-items: center;
     font-size: 1.2rem;
     font-weight: 500;
     border-radius: var(--smallBorder);
     border: .1rem solid rgba(27 31 36 / .15);
-}
+} */
 
-.header-wrapper .header-right .star-container .star-left {
+/* .header-wrapper .header-right .star-container .star-left {
     color: #24292f;
     border-right: .1rem solid rgba(27 31 36 / .15);
     padding: .2rem .5rem;
@@ -277,7 +242,7 @@ a {
 
 .header-wrapper .header-right .star-container .star-right {
     padding: .2rem .5rem;
-}
+} */
 
 @media(min-width: 768px) {
     .content header .header-wrapper .header-right {
@@ -290,9 +255,15 @@ a {
     }
 }
 
-.content header .header-wrapper .header-right img {
+/* .content header .header-wrapper .header-right img {
     width: 4rem;
     border-radius: 50%;
+} */
+
+.all-cards {
+    display: grid;
+    gap: 2rem;
+    
 }
 
 .main {
@@ -312,13 +283,13 @@ a {
     }
 }
 
-.main .box {
+/* .main .box {
     padding: 1.5rem;
     background-color: var(--whiteColor);
     border-radius: var(--smallBorder);
     box-shadow: 0 .2rem .6rem 0 rgba(67 89 113 /.12);
-}
-
+} */
+/* 
 .main .box-1 {
     padding: 0;
     display: flex;
@@ -363,7 +334,7 @@ a {
 
 .main .box .box-right img {
     display: none;
-}
+} */
 
 @media(min-width: 768px) {
     .main .box .box-right img {
@@ -373,7 +344,7 @@ a {
     }
 }
 
-.main .box-2,
+/* .main .box-2,
 .main .box-3,
 .main .box-4,
 .main .box-5 {
@@ -383,8 +354,8 @@ a {
     border-left: .2rem solid var(--blueColor);
     height: 16rem;
 
-}
-
+} */
+/* 
 .main .box-2,
 .main .box-3,
 .main .box-4 {
@@ -426,7 +397,7 @@ a {
     font-size: 4rem;
     color: var(--blueColor);
     transition: all .6s ease-in-out;
-}
+} */
 
 .main .box-5 .box-icon i {
     color: var(--whiteColor);
@@ -516,7 +487,7 @@ a {
     transition: all .3s ease-in-out;
 }
 
-.box .box-header a:hover {
+/* .box .box-header a:hover {
     background-color: var(--whiteColor);
     color: var(--blueColor);
     border-color: var(--blueColor);
@@ -526,9 +497,9 @@ a {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-}
+} */
 
-.box .box-container .customer {
+/* .box .box-container .customer {
     display: flex;
     align-items: center;
     gap: 2rem;
@@ -562,14 +533,14 @@ a {
 
 .box .box-container .contacts i:hover {
     opacity: .5;
-}
+} */
 
 .main .box-6 {
     white-space: nowrap;
     overflow-x: auto;
 }
 
-.box .box-body table {
+/* .box .box-body table {
     width: 100%;
     border-collapse: collapse;
 }
@@ -637,7 +608,7 @@ a {
 
 .box .box-body table tbody tr td .progress .bar-3 {
     background: linear-gradient(45deg, #f54ea2, #ff7676);
-}
+} */
 
 .box-8 {
     display: flex;

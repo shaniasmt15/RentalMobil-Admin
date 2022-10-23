@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { deleteCars } from "../Features/cars/car-slice";
+import { deleteCars, getAllCars } from "../Features/cars/car-slice";
 
 export const Card = ({ cars }) => {
   const navigate = useNavigate();
@@ -10,6 +10,7 @@ export const Card = ({ cars }) => {
   const handleDelete = (id) => {
     // console.log(id);
     dispatch(deleteCars(id))
+     .then(() => dispatch(getAllCars()))
   };
 
   const rupiahFormat = (num) => {

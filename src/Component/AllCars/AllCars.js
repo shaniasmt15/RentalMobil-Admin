@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
-
+import "./AllCars.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllCars } from "../Features/cars/car-slice";
+import { getAllCars } from "../../Features/cars/car-slice";
 
 import DataTable from "react-data-table-component";
-import { Card } from "./Card";
+import { Card } from "../Card";
 import ReactPaginate from "react-paginate";
 
 const AllCars = () => {
@@ -24,7 +24,7 @@ const AllCars = () => {
       }, 1000);
     }
     if (category !== "All") {
-      const newCars = mobil.filter((car) => car.category === category);
+      const newCars = mobil?.filter((car) => car.category === category);
       setCarShow(newCars);
     } else {
       setCarShow(mobil);
@@ -39,9 +39,9 @@ const AllCars = () => {
     <>
       {/* <button>Get Data</button> */}
       {/* jika semua data langsung di fetch dalam 1 waktu */}
-      <div class="input-group mb-3">
+      <div className="input-group mb-3 main">
         <select
-          class="custom-select"
+          className="custom-select"
           id="inputGroupSelect01"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
@@ -53,10 +53,12 @@ const AllCars = () => {
           <option value="4 - 6 orang">4 - 6 orang</option>
         </select>
       </div>
-      {mobil &&
-        carShow?.map((el) => {
-          return <Card key={el.id} cars={el} />;
-        })}
+      {/* <div class="row row-cols-1 row-cols-md-3 g-4"> */}
+        {mobil &&
+          carShow?.map((el) => {
+            return <Card key={el.id} cars={el} />;
+          })}
+      {/* </div> */}
       <div>
         <ReactPaginate
           previousLabel={"← Previous"}

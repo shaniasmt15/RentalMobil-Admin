@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
+import './LoginSection.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { authLogin } from '../../Features/auth/auth-slice';
-import './LoginSection.css';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';

@@ -139,7 +139,7 @@ export const Form = ({ page, id }) => {
                   <option value="small">Small</option>
                   <option value="medium">Medium</option>
                   <option value="large">Large</option>
-                  <option value="4-6 orang">4 - 6 orang</option>
+                  <option value="4 - 6 orang">4 - 6 orang</option>
                 </select>
                 <div class="invalid-feedback">
                   Example invalid custom select feedback
