@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import {
   getAllCars,
   getById,
@@ -55,6 +55,8 @@ export const Form = ({ page, id }) => {
     }
   }, [id]);
 
+  console.log(page, 'FORM')
+
   // update cars
   const updateHandler = (e) => {
     e.preventDefault();
@@ -64,7 +66,6 @@ export const Form = ({ page, id }) => {
       dispatch(getAllCars({ page }));
     });
   };
-
   return (
     <>
       <div className="row mb-3">

@@ -2,12 +2,11 @@ import { useState } from "react";
 import "./Dash.css";
 import AllCars from "../AllCars/AllCars";
 import { Menu, MenuItem } from "react-pro-sidebar";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, Outlet } from "react-router-dom";
 
 function Dash(props) {
-
   const { children } = props;
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [collapse, setCollapse] = useState(true);
 
   const HandleCollapse = () => {
@@ -23,9 +22,7 @@ function Dash(props) {
           <img src="/Assets/Home.png" alt="" />
         </div>
         <div className="navigation-icon">
-            
           <img src="/Assets/Cars.png" alt="" />
-            
         </div>
       </div>
 
@@ -33,7 +30,7 @@ function Dash(props) {
         <div className={collapse ? "sidebar sidebar-show" : "sidebar"}>
           <Menu>
             <MenuItem> Cars</MenuItem>
-            <MenuItem> List Cars</MenuItem>
+            <MenuItem onClick={() => navigate('/')}> List Cars</MenuItem>
           </Menu>
         </div>
         <div className={collapse ? "content content-show " : "content"}>
@@ -120,16 +117,7 @@ function Dash(props) {
       {/* Content */}
       <div className="content">
         <div className="main">
-        {/* <div className="d-flex justify-content-between">
-          <div>Halaman All Cars</div>
-          <button
-            className="btn btn-primary mb-3"
-            onClick={() => navigate("add")}
-          >
-            Add New Car
-          </button>
-        </div> */}
-          <AllCars />
+          <Outlet />
         </div>
       </div>
     </>

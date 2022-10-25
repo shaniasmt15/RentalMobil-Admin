@@ -16,36 +16,34 @@ const AllCars = () => {
   const [category, setCategory] = useState("All");
   const [carShow, setCarShow] = useState([]);
   const { pageCount, count, mobil } = useSelector((state) => state.car);
+ 
+  useEffect(() => {
+    dispatch(getAllCars({ page }));
+  }, [page]);
+ 
+  let val
+  const tesRadio = (e) => {
+    val = e.target.value
+    setCategory(e.target.value)
+    if (val !== "All") {
+      const newCars = mobil?.filter((car) => car.category === val);
+      setCarShow(newCars);
+    } else {
+      setCarShow(mobil);
+    }
+  }
 
-  // const [count, setCount] = useState(0);
-  const [pageSize, setPageSize] = useState(3);
-  const pageSizes = [3, 6, 9];
-
-  let val;
-  // const tesRadio = (e) => {
-  //   let val = e.target.value
-  //   if (val !== "All") {
-  //     const newCars = mobil?.filter((car) => car.category === val);
-  //     setCarShow(newCars);
-  //   } else {
-  //     setCarShow(mobil);
-  //   }
-  // }
-
+  console.log(val, 'val')
+  
   React.useEffect(() => {
     if (mobil && mobil !== null) {
       setTimeout(() => {
         setLoading(!loading);
       }, 1000);
     }
-    //  tesRadio(e)
-  }, [val, mobil]);
+  }, [carShow, mobil]);
 
-  useEffect(() => {
-    dispatch(getAllCars({ page }));
-  }, [page]);
 
-  // console.log(mobil, "MBIL");
   const handlePageChange = (event, value) => {
     setPage(value);
     dispatch(getAllCars({ page: value }));
@@ -63,8 +61,10 @@ const AllCars = () => {
         </button>
       </div>
       <div className=" input-group mb-3">
-        {/* <div className="option" onChange={(e) => tesRadio(e)} > 
-         
+        <div className="option" onChange={(e) => {
+          tesRadio(e)
+          // setCategory(e.target.value)
+        }} > 
           <input
             type="radio"
             className="btn-check"
@@ -125,14 +125,22 @@ const AllCars = () => {
           <label class="btn btn-secondary option5" for="option5">
             4 - 6 People
           </label>
-        </div> */}
+        </div>
       </div>
 
       <div class="row row-cols-1 row-cols-md-4 g-4">
-        {mobil &&
-          mobil?.map((el) => {
+        {
+          carShow.length <= 9 || carShow.length >=11 ? carShow?.map((el) => {
             return <Card key={el.id} cars={el} page={page} />;
-          })}
+          }) : mobil?.map((el) => {
+            return <Card key={el.id} cars={el} page={page} />;
+          })
+        }
+        {/* {carShow &&
+          // carShow?.map((el) => {
+          //   return <Card key={el.id} cars={el} page={page} />;
+          // })
+        } */}
       </div>
       <div>
         <Pagination
