@@ -53,7 +53,7 @@ export const postCars = createAsyncThunk('cars/postCars',
 export const deleteCars = createAsyncThunk('cars/deleteCars',
     async(args,  thunkAPI) => {
         try {
-
+            console.log(args, 'ARGS DEL')
             const response = await carsAPI.deleteCars(args)
             thunkAPI.dispatch(setMessage("Success create new Cars!"))
 
@@ -134,7 +134,7 @@ export const updateCars = createAsyncThunk('cars/updateCars',
 const initialState= {
     mobil : null,
     pageCount: null,
-    films :null,
+    count: null
 }
 
 const carsSlice = createSlice({
@@ -144,6 +144,7 @@ const carsSlice = createSlice({
         [getAllCars.fulfilled] : (state, action) => {
             state.mobil = action.payload.cars;
             state.pageCount = action.payload.pageCount
+            state.count = action.payload.count
         },
         [getAllCars.rejected] : (state, action) => {
             state.mobil = null;
@@ -155,7 +156,7 @@ const carsSlice = createSlice({
             state.mobil = null
         },
         [deleteCars.fulfilled] : (state, action) => {
-            state.mobil = action.payload
+            state.mobil = null
         },
         [deleteCars.rejected] : (state, action) => {
             state.mobil = null

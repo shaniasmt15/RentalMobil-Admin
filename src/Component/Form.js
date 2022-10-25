@@ -1,80 +1,74 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { getById, postCars, updateCars } from "../Features/cars/car-slice";
+import {
+  getAllCars,
+  getById,
+  postCars,
+  updateCars,
+} from "../Features/cars/car-slice";
+import Swal from "sweetalert2";
 
 export const Form = ({ page, id }) => {
-
   const [inputCars, setInputCars] = useState({
-    name: '',
-    price: '',
-    image: '',
-    category: '',
-    id: ""
-  })
+    name: "",
+    price: "",
+    image: null,
+    category: "",
+    id: "",
+  });
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const [fileInput, setFileInput] = useState(null)
+  const [fileInput, setFileInput] = useState(null);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onChange = (e) => {
-
-    const {name, value } = e.target
-    setInputCars({...inputCars, [name] : value})
-  }
+    const { name, value } = e.target;
+    setInputCars({ ...inputCars, [name]: value });
+  };
 
   // add cars
   const createHandler = (e) => {
-    
-    e.preventDefault()
+    e.preventDefault();
 
-    dispatch(postCars(inputCars))
-     .then(() => {
+    dispatch(postCars(inputCars)).then(() => {
+      Swal.fire("Success", "Success create new Cars!", "success");
+      navigate("/");
+      dispatch(getAllCars({ page }));
+    });
+  };
 
-         navigate('/')
-     })
-
-
-  }
-
+  console.log(fileInput?.name)
   useEffect(() => {
-    dispatch(getById(id))
-     .then(res => {
-        // console.log(res, 'RES')
+    if (id) {
+      dispatch(getById(id)).then((res) => {
         setInputCars({
-            name: res.payload?.name,
-            price: res.payload?.price,
-            image: res.payload?.image,
-            category: res.payload?.category,
-            id
-        })
-     })
-    
-  }, [id])
-
-  console.log(fileInput, 'file')
+          name: res.payload?.name,
+          price: res.payload?.price,
+          image: res.payload?.image,
+          category: res.payload?.category,
+          id,
+        });
+      });
+    }
+  }, [id]);
 
   // update cars
   const updateHandler = (e) => {
-    
-    e.preventDefault()
-   
-    // dispatch(getById(id))
-    dispatch(updateCars(inputCars, id))
-     .then(() => {
-        navigate('/')
-     })
-
-  }
-
-
+    e.preventDefault();
+    dispatch(updateCars(inputCars, id)).then(() => {
+      Swal.fire("Success", "Success Update Cars!", "success");
+      navigate("/");
+      dispatch(getAllCars({ page }));
+    });
+  };
 
   return (
     <>
-      <div>
-        <form onSubmit={page === '/add' ? createHandler : updateHandler}>
+      <div className="row mb-3">
+        <form onSubmit={page === "/add" ? createHandler : updateHandler}>
           <div class="form-group row">
             <label for="inputEmail3" class="col-sm-2 col-form-label">
               Nama
@@ -114,10 +108,13 @@ export const Form = ({ page, id }) => {
             <div class="col-sm-10">
               <div class="custom-file">
                 <input
-                  type="text"
+                  type="file"
+                  accept="image/*"
                   name="image"
-                  value={inputCars.image}
-                  onChange={onChange}
+                  onChange={(e) => {
+                    setFileInput(e.target.files[0]);
+                    inputCars.image = e.target.files[0];
+                  }}
                   class="custom-file-input"
                   id="validatedCustomFile"
                   required
@@ -134,7 +131,13 @@ export const Form = ({ page, id }) => {
             </label>
             <div class="col-sm-10">
               <div class="form-group">
-                <select class="custom-select" name="category" value={inputCars.category} onChange={onChange}  required>
+                <select
+                  class="custom-select"
+                  name="category"
+                  value={inputCars.category}
+                  onChange={onChange}
+                  required
+                >
                   <option value="">Open this select menu</option>
                   <option value="small">Small</option>
                   <option value="medium">Medium</option>
@@ -148,7 +151,9 @@ export const Form = ({ page, id }) => {
             </div>
           </div>
           <button className="btn btn-primary m-5">cancel</button>
-          <button className="btn btn-primary" type="submit">Save</button>
+          <button className="btn btn-primary" type="submit">
+            Save
+          </button>
         </form>
       </div>
     </>

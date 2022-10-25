@@ -2,20 +2,35 @@ import React, { useEffect, useMemo, useState } from "react";
 import "./AllCars.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCars } from "../../Features/cars/car-slice";
-
+import { Pagination } from "@mui/material";
 import DataTable from "react-data-table-component";
 import { Card } from "../Card";
-import ReactPaginate from "react-paginate";
+import { useNavigate } from "react-router-dom";
 
 const AllCars = () => {
   const dispatch = useDispatch(); //ini fitur redux untuk memanggil action di dalam reducer / slice
   //set loading stop & loading start
+  const navigate = useNavigate();
   const [loading, setLoading] = React.useState(true);
   const [page, setPage] = useState(1);
-  const { mobil } = useSelector((state) => state.car);
   const [category, setCategory] = useState("All");
   const [carShow, setCarShow] = useState([]);
-  const { pageCount } = useSelector((state) => state.car);
+  const { pageCount, count, mobil } = useSelector((state) => state.car);
+
+  // const [count, setCount] = useState(0);
+  const [pageSize, setPageSize] = useState(3);
+  const pageSizes = [3, 6, 9];
+
+  let val;
+  // const tesRadio = (e) => {
+  //   let val = e.target.value
+  //   if (val !== "All") {
+  //     const newCars = mobil?.filter((car) => car.category === val);
+  //     setCarShow(newCars);
+  //   } else {
+  //     setCarShow(mobil);
+  //   }
+  // }
 
   React.useEffect(() => {
     if (mobil && mobil !== null) {
@@ -23,53 +38,112 @@ const AllCars = () => {
         setLoading(!loading);
       }, 1000);
     }
-    if (category !== "All") {
-      const newCars = mobil?.filter((car) => car.category === category);
-      setCarShow(newCars);
-    } else {
-      setCarShow(mobil);
-    }
-  }, [category, mobil]);
+    //  tesRadio(e)
+  }, [val, mobil]);
 
   useEffect(() => {
     dispatch(getAllCars({ page }));
-  }, []);
+  }, [page]);
+
+  // console.log(mobil, "MBIL");
+  const handlePageChange = (event, value) => {
+    setPage(value);
+    dispatch(getAllCars({ page: value }));
+  };
 
   return (
     <>
-      {/* <button>Get Data</button> */}
-      {/* jika semua data langsung di fetch dalam 1 waktu */}
-      <div className="input-group mb-3 main">
-        <select
-          className="custom-select"
-          id="inputGroupSelect01"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
+      <div className="d-flex justify-content-between">
+        <div>Halaman All Cars</div>
+        <button
+          className="btn btn-primary mb-3"
+          onClick={() => navigate("add")}
         >
-          <option value="All">All</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
-          <option value="small">Small</option>
-          <option value="4 - 6 orang">4 - 6 orang</option>
-        </select>
+          Add New Car
+        </button>
       </div>
-      {/* <div class="row row-cols-1 row-cols-md-3 g-4"> */}
+      <div className=" input-group mb-3">
+        {/* <div className="option" onChange={(e) => tesRadio(e)} > 
+         
+          <input
+            type="radio"
+            className="btn-check"
+            value='All'
+            name="category"
+            id="option1"
+            // autocomplete="off"
+            // checked
+          />
+          <label class="btn btn-secondary" for="option1">
+            All
+          </label>
+          <input
+            type="radio"
+            class="btn-check"
+            value='large'
+            name="category"
+            id="option2"
+            // autocomplete="off"
+            // checked
+          />
+          <label class="btn btn-secondary option22" for="option2">
+            Large
+          </label>
+          <input
+            type="radio"
+            class="btn-check"
+            value='medium'
+            name="category"
+            id="option3"
+            // autocomplete="off"
+            // checked
+          />
+          <label class="btn btn-secondary option33" for="option3">
+            Medium
+          </label>
+          <input
+            type="radio"
+            class="btn-check"
+            value='small'
+            name="category"
+            id="option4"
+            // autocomplete="off"
+            // checked
+          />
+          <label class="btn btn-secondary option44" for="option4">
+            Small
+          </label>
+          <input
+            type="radio"
+            class="btn-check"
+            value='4 - 6 orang'
+            name="category"
+            id="option5"
+            // autocomplete="off"
+            // checked
+          />
+          <label class="btn btn-secondary option5" for="option5">
+            4 - 6 People
+          </label>
+        </div> */}
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-4 g-4">
         {mobil &&
-          carShow?.map((el) => {
-            return <Card key={el.id} cars={el} />;
+          mobil?.map((el) => {
+            return <Card key={el.id} cars={el} page={page} />;
           })}
-      {/* </div> */}
+      </div>
       <div>
-        <ReactPaginate
-          previousLabel={"← Previous"}
-          nextLabel={"Next →"}
-          pageCount={pageCount}
-          // onPageChange={handlePageClick}
-          containerClassName={"pagination"}
-          previousLinkClassName={"pagination__link"}
-          nextLinkClassName={"pagination__link"}
-          disabledClassName={"pagination__link--disabled"}
-          activeClassName={"pagination__link--active"}
+        <Pagination
+          className="my-3"
+          count={count}
+          page={page}
+          siblingCount={1}
+          boundaryCount={1}
+          variant="outlined"
+          shape="rounded"
+          onChange={handlePageChange}
         />
       </div>
       {/* jika api nya menerapkan pagination, berarti kita butuh handling tambahan untuk menghandle fetch API 

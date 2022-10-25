@@ -6,72 +6,49 @@ import React, { useState } from "react";
 import "./Aside.css";
 
 import { Sidebar, Menu, MenuItem, useProSidebar } from "react-pro-sidebar";
-import { useNavigate } from "react-router-dom";
-import AllCars from "../AllCars/AllCars";
+import { Outlet, useNavigate } from "react-router-dom";
 
 export default function Aside() {
   const { collapseSidebar } = useProSidebar();
   const navigate = useNavigate();
   return (
     <div style={{ display: "flex", height: "100%", minHeight: "400px" }}>
-      <Sidebar>
+      <Sidebar width="250px">
         <Menu>
-          <MenuItem onClick={() => navigate("tes")}> Documentation</MenuItem>
-          <MenuItem> Calendar</MenuItem>
-          <MenuItem> E-commerce</MenuItem>
+          <MenuItem> LOGO</MenuItem>
+          <MenuItem> Dashboard</MenuItem>
+          <MenuItem onClick={() => navigate('/')} > Cars</MenuItem>
           <MenuItem> Examples</MenuItem>
         </Menu>
       </Sidebar>
       <main>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-          <div class="col">
-            <div class="card h-100">
-              <img src="..." class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
+        <header>
+          <div className="header-wrapper">
+            <div className="header-left">
+              <div className="toggle-icon">
+                <i className="fas fa-bars"></i>
               </div>
             </div>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <img src="..." class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a short card.</p>
+            <div className="header-right">
+              <div>
+                <i className="fas fa-search"></i>
+                <input type={"text"} placeholder="search..."></input>
               </div>
+              <i className="far fa-user-circle"></i>
+              <label>Username</label>
             </div>
           </div>
-          <div class="col">
-            <div class="card h-100">
-              <img src="..." class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <img src="..." class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-              </div>
-            </div>
-          </div>
+        </header>
+        <div className="d-flex justify-content-between">
+          <div>Halaman All Cars</div>
+          <button
+            className="btn btn-primary mb-3"
+            onClick={() => navigate("add")}
+          >
+            Add New Car
+          </button>
         </div>
+        <Outlet />
       </main>
     </div>
   );

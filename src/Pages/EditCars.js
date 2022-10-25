@@ -4,7 +4,6 @@ import { Form } from '../Component/Form'
 
 export const EditCars = () => {
   const param = useParams()
-  // console.log(param.id, 'edit id')
   const location = useLocation()
   return (
     <>

@@ -5,6 +5,7 @@ import { authLogin } from '../../Features/auth/auth-slice';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 
 function LoginSection() {
@@ -18,6 +19,7 @@ function LoginSection() {
             const login = await dispatch(authLogin(values));
             actions.setSubmitting(false);
             actions.resetForm();
+            return login
         } catch (error) {
             console.log(error);
             actions.setSubmitting(false);
@@ -41,6 +43,14 @@ function LoginSection() {
         validationSchema: loginValidation,
         onSubmit: (values, actions) => {
             handleSubmit(values, actions)
+             .then(() => {
+                Swal.fire(
+                    'Log-in Success',
+                    'Welcome to RentCar',
+                    'success'
+                  )
+                  
+             })
         }
     })
 
