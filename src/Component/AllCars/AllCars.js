@@ -15,7 +15,12 @@ const AllCars = () => {
   const [page, setPage] = useState(1);
   const [category, setCategory] = useState("All");
   const [carShow, setCarShow] = useState([]);
+  const [collapse, setCollapse] = useState(true);
   const { pageCount, count, mobil } = useSelector((state) => state.car);
+
+  const HandleCollapse = () => {
+    setCollapse(!collapse);
+  };
  
   useEffect(() => {
     dispatch(getAllCars({ page }));
@@ -51,6 +56,81 @@ const AllCars = () => {
 
   return (
     <>
+    {/* <div className="header">
+        <div className="toggle" onClick={() => HandleCollapse()}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M3 18H21"
+              stroke="#151515"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M3 12H21"
+              stroke="#151515"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M3 6H21"
+              stroke="#151515"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
+        <div className="space-header" />
+        <div>
+          <div className="input-group">
+            <div className="form-outline">
+              <input id="search-input" type="search" className="form-control" />
+              <label className="form-label" htmlFor="form1">
+                Search
+              </label>
+            </div>
+            <button
+              id="search-button"
+              type="button"
+              className="btn btn-primary"
+            >
+              <i className="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+        <div>
+          <div className="dropdown">
+            <button
+              className="btn btn-primary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-mdb-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Dropdown button
+            </button>
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li>
+                <a className="dropdown-item" href="#">
+                  Action
+                </a>
+              </li>
+              <li>
+                <a className="dropdown-item" href="#">
+                  Another action
+                </a>
+              </li>
+              <li>
+                <a className="dropdown-item" href="#">
+                  Something else here
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div> */}
       <div className="d-flex justify-content-between">
         <div>Halaman All Cars</div>
         <button
@@ -130,7 +210,7 @@ const AllCars = () => {
 
       <div class="row row-cols-1 row-cols-md-4 g-4">
         {
-          carShow.length <= 9 || carShow.length >=11 ? carShow?.map((el) => {
+          carShow?.length <= 9 || carShow?.length >=11 ? carShow?.map((el) => {
             return <Card key={el.id} cars={el} page={page} />;
           }) : mobil?.map((el) => {
             return <Card key={el.id} cars={el} page={page} />;

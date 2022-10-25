@@ -5,7 +5,6 @@ import Login from "./Pages/Login";
 import AllCars from "./Component/AllCars/AllCars";
 import { CreateCars } from "./Pages/CreateCars";
 import { EditCars } from "./Pages/EditCars";
-import Aside from "./Component/Aside/Aside";
 import Dash from "./Component/Dash/Dash";
 
 function App() {
@@ -13,8 +12,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
-        {/* <Route path="/app" element={<Dash />} /> */}
-
         <Route path="/" element={<Dash />}>
           <Route path="/" element={<AllCars />} />
           <Route path="add" element={<CreateCars />} />

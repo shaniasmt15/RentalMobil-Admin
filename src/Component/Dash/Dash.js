@@ -3,6 +3,8 @@ import "./Dash.css";
 import AllCars from "../AllCars/AllCars";
 import { Menu, MenuItem } from "react-pro-sidebar";
 import { useNavigate, Link, Outlet } from "react-router-dom";
+import Login from "../../Pages/Login";
+import Swal from "sweetalert2";
 
 function Dash(props) {
   const { children } = props;
@@ -12,6 +14,34 @@ function Dash(props) {
   const HandleCollapse = () => {
     setCollapse(!collapse);
   };
+
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  const logOut = () => {
+  
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to see this page again",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, logout!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("user")
+        localStorage.clear()
+        navigate('/login')
+        Swal.fire(
+          'Success!',
+          'Logout.',
+          'success'
+        )
+        
+      }
+    })
+  }
+
 
   return (
     <>
@@ -30,7 +60,7 @@ function Dash(props) {
         <div className={collapse ? "sidebar sidebar-show" : "sidebar"}>
           <Menu>
             <MenuItem> Cars</MenuItem>
-            <MenuItem onClick={() => navigate('/')}> List Cars</MenuItem>
+            <MenuItem onClick={() => navigate("/")}> List Cars</MenuItem>
           </Menu>
         </div>
         <div className={collapse ? "content content-show " : "content"}>
@@ -84,40 +114,29 @@ function Dash(props) {
           </div>
         </div>
         <div>
-          <div className="dropdown">
+          <div class="dropdown">
             <button
-              className="btn btn-primary dropdown-toggle"
+              class="btn btn-secondary dropdown-toggle"
               type="button"
               id="dropdownMenuButton"
-              data-mdb-toggle="dropdown"
+              data-toggle="dropdown"
+              aria-haspopup="true"
               aria-expanded="false"
             >
-              Dropdown button
+              { user ? user?.email : "" }
             </button>
-            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li>
-                <a className="dropdown-item" href="#">
-                  Action
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Another action
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </li>
-            </ul>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <button class="dropdown-item"  onClick={() => logOut()}>
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       </div>
       {/* Content */}
       <div className="content">
         <div className="main">
-          <Outlet />
+          <Outlet  />
         </div>
       </div>
     </>
