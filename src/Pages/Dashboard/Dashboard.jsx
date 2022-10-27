@@ -10,9 +10,7 @@ function Dashboard() {
       <div className="container" id="top">
         <aside className="sidebar-wrapper">
           <div className="sidebar-header">
-            {/* <i className="fa-duotone fa-car-rear"></i> */}
             <i class="fa-light fa-truck"></i>
-            {/* <i class="fa-thin fa-truck"></i> */}
             <h4>Logo</h4>
             <div className="close-menu">
               <i className="fas fa-chevron-left"></i>
@@ -75,24 +73,7 @@ function Dashboard() {
         </main>
       </div>
 
-      {/* <div className="switcher-container">
-        <div className="switcher-icon">
-            <i className="fas fa-cog"></i>
-        </div>
-        <div className="switcher-close">
-            <i className="fas fa-times"></i>
-        </div>
-        <div className="switcher-header">
-            <h3>theme customizer</h3>
-            <h4>theme styles</h4>
-        </div>
-        <div className="switcher-body">
-            <ul>
-                <li data-color="#f7f7f7" className="active"></li>
-                <li data-color="#212529"></li>
-            </ul>
-        </div>
-    </div> */}
+     
     </>
   );
 }

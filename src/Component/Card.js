@@ -13,11 +13,12 @@ export const Card = ({ cars, page }) => {
     useState(false);
   const [deleteMessage, setDeleteMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
+  
+
 
  
 
   const handleDelete = (id) => {
-    // console.log(id);
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -63,7 +64,6 @@ export const Card = ({ cars, page }) => {
           <img
             className="card-img-top"
             src={cars?.image}
-            // style={{ width: "200px", height: "300px" }}
             alt="Card image cap"
           />
           <div class="card-body">
@@ -71,6 +71,7 @@ export const Card = ({ cars, page }) => {
             <h3>{rupiahFormat(cars?.price)} / hari</h3>
             <h5>{cars?.category}</h5>
             <h5>{cars?.updatedAt}</h5>
+            {/* <h5>{cars?.dateFormat}</h5> */}
           </div>
           <div className="d-flex justify-content-around py-2">
             <button
