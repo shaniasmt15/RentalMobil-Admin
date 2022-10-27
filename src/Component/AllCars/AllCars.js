@@ -3,7 +3,6 @@ import "./AllCars.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCars } from "../../Features/cars/car-slice";
 import { Pagination } from "@mui/material";
-import DataTable from "react-data-table-component";
 import { Card } from "../Card";
 import { useNavigate } from "react-router-dom";
 
@@ -38,7 +37,6 @@ const AllCars = () => {
     }
   }
 
-  console.log(val, 'val')
   
   React.useEffect(() => {
     if (mobil && mobil !== null) {
@@ -56,81 +54,7 @@ const AllCars = () => {
 
   return (
     <>
-    {/* <div className="header">
-        <div className="toggle" onClick={() => HandleCollapse()}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M3 18H21"
-              stroke="#151515"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M3 12H21"
-              stroke="#151515"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M3 6H21"
-              stroke="#151515"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-        <div className="space-header" />
-        <div>
-          <div className="input-group">
-            <div className="form-outline">
-              <input id="search-input" type="search" className="form-control" />
-              <label className="form-label" htmlFor="form1">
-                Search
-              </label>
-            </div>
-            <button
-              id="search-button"
-              type="button"
-              className="btn btn-primary"
-            >
-              <i className="fas fa-search"></i>
-            </button>
-          </div>
-        </div>
-        <div>
-          <div className="dropdown">
-            <button
-              className="btn btn-primary dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton"
-              data-mdb-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Dropdown button
-            </button>
-            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li>
-                <a className="dropdown-item" href="#">
-                  Action
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Another action
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div> */}
+  
       <div className="d-flex justify-content-between">
         <div>Halaman All Cars</div>
         <button
@@ -154,31 +78,31 @@ const AllCars = () => {
             // autocomplete="off"
             // checked
           />
-          <label class="btn btn-secondary" for="option1">
+          <label className="btn btn-secondary" for="option1">
             All
           </label>
           <input
             type="radio"
-            class="btn-check"
+            className="btn-check"
             value='large'
             name="category"
             id="option2"
             // autocomplete="off"
             // checked
           />
-          <label class="btn btn-secondary option22" for="option2">
+          <label className="btn btn-secondary option22" for="option2">
             Large
           </label>
           <input
             type="radio"
-            class="btn-check"
+            className="btn-check"
             value='medium'
             name="category"
             id="option3"
             // autocomplete="off"
             // checked
           />
-          <label class="btn btn-secondary option33" for="option3">
+          <label className="btn btn-secondary option33" for="option3">
             Medium
           </label>
           <input
@@ -190,12 +114,12 @@ const AllCars = () => {
             // autocomplete="off"
             // checked
           />
-          <label class="btn btn-secondary option44" for="option4">
+          <label className="btn btn-secondary option44" for="option4">
             Small
           </label>
           <input
             type="radio"
-            class="btn-check"
+            className="btn-check"
             value='4 - 6 orang'
             name="category"
             id="option5"
@@ -208,7 +132,7 @@ const AllCars = () => {
         </div>
       </div>
 
-      <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div className="row row-cols-1 row-cols-md-4 g-4">
         {
           carShow?.length <= 9 || carShow?.length >=11 ? carShow?.map((el) => {
             return <Card key={el.id} cars={el} page={page} />;

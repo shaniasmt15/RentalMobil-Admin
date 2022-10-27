@@ -9,7 +9,7 @@ export const getAllCars = createAsyncThunk("cars/getAll",
         try{
             const response = await carsAPI.getAllCars(page);
             thunkAPI.dispatch(setMessage('Success get all Cars!')); 
-            console.log(response.data, "response")
+            // console.log(response.data, "response")
             return response.data
         }
         catch(err){

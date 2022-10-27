@@ -151,7 +151,7 @@ export const Form = ({ page, id }) => {
               </div>
             </div>
           </div>
-          <button className="btn btn-primary m-5">cancel</button>
+          <button className="btn btn-primary">cancel</button>
           <button className="btn btn-primary" type="submit">
             Save
           </button>
