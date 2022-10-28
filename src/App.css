@@ -1,7 +1,4 @@
-* {
-  box-sizing: border-box;
-}  
-
+/* 
 .App {
   text-align: center;
 }
@@ -39,4 +36,42 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+ 
+
+:root {
+    --blueColor: #008cff;
+    --whiteColor: #ffffff;
+    --lightGray: #f7f7f7;
+    --textColor: #4c5258;
+    --borderColor: #e4e4e4;
+    --smallBorder: .5rem;
+    --bigBorder: 2rem;
+    --fs13: 1.3rem;
+    --fs14: 1.4rem;
+    --fs15: 1.5rem;
+    --fs16: 1.6rem;
+    --fs20: 2rem;
+    --fs30: 3rem;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--lightGray);
+    color: var(--textColor);
+    position: relative;
 }

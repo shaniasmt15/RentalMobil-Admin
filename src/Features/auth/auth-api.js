@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const API_URL = 'https://bootcamp-rent-car.herokuapp.com/admin/auth/'
+const API_URL = 'https://bootcamp-rent-cars.herokuapp.com/admin/auth/'
 
 export const login = ({email, password}) => {
     return axios.post(`${API_URL}login`, {email, password})
