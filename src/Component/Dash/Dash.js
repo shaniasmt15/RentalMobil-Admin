@@ -114,9 +114,9 @@ function Dash(props) {
           </div>
         </div>
         <div>
-          <div class="dropdown">
+          <div className="dropdown">
             <button
-              class="btn btn-secondary dropdown-toggle"
+              className="btn btn-secondary dropdown-toggle"
               type="button"
               id="dropdownMenuButton"
               data-toggle="dropdown"
@@ -125,8 +125,8 @@ function Dash(props) {
             >
               { user ? user?.email : "" }
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <button class="dropdown-item"  onClick={() => logOut()}>
+            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <button className="dropdown-item"  onClick={() => logOut()}>
                 Logout
               </button>
             </div>

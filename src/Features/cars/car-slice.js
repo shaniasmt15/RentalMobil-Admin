@@ -134,7 +134,7 @@ export const updateCars = createAsyncThunk('cars/updateCars',
 const initialState= {
     mobil : null,
     pageCount: null,
-    count: null
+    count: 0
 }
 
 const carsSlice = createSlice({
