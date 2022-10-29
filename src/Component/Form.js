@@ -70,11 +70,11 @@ export const Form = ({ page, id }) => {
     <>
       <div className="row mb-3">
         <form onSubmit={page === "/add" ? createHandler : updateHandler}>
-          <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">
+          <div className="form-group row">
+            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
               Nama
             </label>
-            <div class="col-sm-10">
+            <div className="col-sm-10">
               <input
                 type="text"
                 name="name"
@@ -86,11 +86,11 @@ export const Form = ({ page, id }) => {
               />
             </div>
           </div>
-          <div class="form-group row">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">
+          <div className="form-group row">
+            <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">
               Harga
             </label>
-            <div class="col-sm-10">
+            <div className="col-sm-10">
               <input
                 type="number"
                 name="price"
@@ -102,12 +102,12 @@ export const Form = ({ page, id }) => {
               />
             </div>
           </div>
-          <div class="form-group row">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">
+          <div className="form-group row">
+            <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">
               Foto
             </label>
-            <div class="col-sm-10">
-              <div class="custom-file">
+            <div className="col-sm-10">
+              <div className="custom-file">
                 <input
                   type="file"
                   accept="image/*"
@@ -116,24 +116,24 @@ export const Form = ({ page, id }) => {
                     setFileInput(e.target.files[0]);
                     inputCars.image = e.target.files[0];
                   }}
-                  class="custom-file-input"
+                  className="custom-file-input"
                   id="validatedCustomFile"
                   required
                 />
-                <div class="invalid-feedback">
+                <div className="invalid-feedback">
                   Example invalid custom file feedback
                 </div>
               </div>
             </div>
           </div>
-          <div class="form-group row">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">
+          <div className="form-group row">
+            <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">
               Kategori
             </label>
-            <div class="col-sm-10">
-              <div class="form-group">
+            <div className="col-sm-10">
+              <div className="form-group">
                 <select
-                  class="custom-select"
+                  className="custom-select"
                   name="category"
                   value={inputCars.category}
                   onChange={onChange}
@@ -145,13 +145,13 @@ export const Form = ({ page, id }) => {
                   <option value="large">Large</option>
                   <option value="4 - 6 orang">4 - 6 orang</option>
                 </select>
-                <div class="invalid-feedback">
+                <div className="invalid-feedback">
                   Example invalid custom select feedback
                 </div>
               </div>
             </div>
           </div>
-          <button className="btn btn-primary">cancel</button>
+          <button className="btn btn-primary" onClick={()=>navigate('/')}>cancel</button>
           <button className="btn btn-primary" type="submit">
             Save
           </button>

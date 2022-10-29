@@ -54,20 +54,20 @@ export const Card = ({ cars, page }) => {
 
   return (
     <>
-      <div class="col">
+      <div className="col">
         {successMessage && (
-          <div class="alert alert-primary" role="alert">
+          <div className="alert alert-primary" role="alert">
             {successMessage}
           </div>
         )}
-        <div class="card h-100">
+        <div className="card h-100">
           <img
             className="card-img-top"
             src={cars?.image}
             alt="Card image cap"
           />
-          <div class="card-body">
-            <h5 class="card-title">{cars?.name}</h5>
+          <div className="card-body">
+            <h5 className="card-title">{cars?.name}</h5>
             <h3>{rupiahFormat(cars?.price)} / hari</h3>
             <h5>{cars?.category}</h5>
             <h5>{cars?.updatedAt}</h5>
