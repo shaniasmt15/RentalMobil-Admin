@@ -10,7 +10,7 @@ function Dashboard() {
 
     useEffect(() => {
         !isLoggedIn && navigate('/login');
-    })
+    },[])
 
     return (
         <Fragment>
@@ -20,4 +20,4 @@ function Dashboard() {
     )
 }
 
-export default Dashboard
+export default Dashboard;

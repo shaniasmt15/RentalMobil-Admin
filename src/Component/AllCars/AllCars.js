@@ -16,13 +16,16 @@ const AllCars = () => {
   const [carShow, setCarShow] = useState([]);
   const [collapse, setCollapse] = useState(true);
   const { pageCount, count, mobil } = useSelector((state) => state.car);
+  const {isLoggedIn} = useSelector(state => {return state.auth});
+
 
   const HandleCollapse = () => {
     setCollapse(!collapse);
   };
  
   useEffect(() => {
-    dispatch(getAllCars({ page }));
+    !isLoggedIn && navigate('/login');
+    isLoggedIn && dispatch(getAllCars({ page }));
   }, [page]);
  
   let val

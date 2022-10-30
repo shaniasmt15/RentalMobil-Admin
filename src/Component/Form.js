@@ -35,7 +35,7 @@ export const Form = ({ page, id }) => {
 
     dispatch(postCars(inputCars)).then(() => {
       Swal.fire("Success", "Success create new Cars!", "success");
-      navigate("/");
+      navigate("/cars");
       dispatch(getAllCars({ page }));
     });
   };
@@ -62,7 +62,7 @@ export const Form = ({ page, id }) => {
     e.preventDefault();
     dispatch(updateCars(inputCars, id)).then(() => {
       Swal.fire("Success", "Success Update Cars!", "success");
-      navigate("/");
+      navigate("/cars");
       dispatch(getAllCars({ page }));
     });
   };
@@ -151,7 +151,7 @@ export const Form = ({ page, id }) => {
               </div>
             </div>
           </div>
-          <button className="btn btn-primary" onClick={()=>navigate('/')}>cancel</button>
+          <button className="btn btn-primary" onClick={()=>navigate('/cars')}>cancel</button>
           <button className="btn btn-primary" type="submit">
             Save
           </button>

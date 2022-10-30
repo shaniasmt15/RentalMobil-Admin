@@ -48,10 +48,10 @@ function Dash(props) {
       {/* Navbar */}
       <div className="navigation">
         <div className="logo"></div>
-        <div className="navigation-icon">
+        <div className="navigation-icon" style={{cursor: 'pointer'}} onClick={() => navigate('/')}>
           <img src="/Assets/Home.png" alt="" />
         </div>
-        <div className="navigation-icon">
+        <div className="navigation-icon" style={{cursor: 'pointer'}} onClick={() => navigate('/cars')}>
           <img src="/Assets/Cars.png" alt="" />
         </div>
       </div>
@@ -59,8 +59,8 @@ function Dash(props) {
       <div className="container">
         <div className={collapse ? "sidebar sidebar-show" : "sidebar"}>
           <Menu>
-            <MenuItem> Cars</MenuItem>
-            <MenuItem onClick={() => navigate("/")}> List Cars</MenuItem>
+            <h4 className="mx-3">Cars</h4>
+            <MenuItem onClick={() => navigate("/cars")}> List Cars</MenuItem>
           </Menu>
         </div>
         <div className={collapse ? "content content-show " : "content"}>

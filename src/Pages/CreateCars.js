@@ -1,10 +1,17 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Form } from '../Component/Form'
 
 export const CreateCars = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const {isLoggedIn} = useSelector(state => {return state.auth});
 
-  const location = useLocation()
+  useEffect(() => {
+    !isLoggedIn && navigate('/login');
+  },[])
 
   return (
     <>
