@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import DataTable from 'react-data-table-component';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllOrder } from '../../Features/order/order-slice';
+import { getAllOrder, updateOrder } from '../../Features/order/order-slice';
 
 function OrderTable() {
     const dispatch = useDispatch();
     const orders = useSelector(state => {return state.order.orderList});
     const [currentPage, setCurrentPage] = useState(1);
+    const [pending, setPending] = useState(true);
+
+    
 
 
     const columns = [
+        {
+            name: 'Order Id',
+            selector: row => row.id,
+            sortable: true,
+        },
         {
             name: 'User',
             selector: row => row.User.email,
@@ -38,7 +46,13 @@ function OrderTable() {
         {
             name: 'Status',
             selector: row => row.status === false? 'Belum dibayar' : 'Sudah dibayar',
+            sortable: true,
         },
+        {
+            name: 'confirmation',
+            selector: row => row.status === false? <button className='btn btn-success' onClick={async(e) => {e.preventDefault(); await dispatch(updateOrder(row.id)); dispatch(getAllOrder({currentPage}));}}>confirm</button> : <button className='btn btn-light' disabled>confirmed</button>,
+            sortable: true,
+        }
         
     ];
 
@@ -57,12 +71,20 @@ function OrderTable() {
     }
 
     useEffect(() => {
-        dispatch(getAllOrder({currentPage}));
+        try {
+            setPending(true);
+            dispatch(getAllOrder({currentPage}));
+            setPending(false);
+        } catch (error) {
+            setPending(false);
+            console.log(error)
+        }
+        
     }, [currentPage])
 
 
     return (
-        <div className="container">
+        <div className="container my-5">
             <h1 className='my-3' style={{fontSize: '24px'}}>Dashboard</h1>
             <p className='fw-bolder px-2' style={{borderLeft: 'solid 5px #0D28A6'}}>List Order</p>
            {orders && <DataTable 
@@ -74,6 +96,7 @@ function OrderTable() {
                 paginationTotalRows={orders.count}
                 // onChangeRowsPerPage={handlePerRowsChange}
                 onChangePage={(e) => setCurrentPage(e)}
+                progressPending={pending}
             />}
         </div>
            

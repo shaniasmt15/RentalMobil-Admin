@@ -15,7 +15,7 @@ export const getAllOrder = createAsyncThunk("admin/getAllOrder",
 )
 
 export const updateOrder = createAsyncThunk("admin/updateOrder",
-    async ({ id }, thunkAPI) => {
+    async (id, thunkAPI) => {
         try {
             const response = await orderAPI.updateOrder(id);
             return response.data;

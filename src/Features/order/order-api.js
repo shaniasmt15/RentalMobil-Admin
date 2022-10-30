@@ -14,7 +14,7 @@ const getAllOrder = ({currentPage}) => {
     return response;
 }
 
-const updateOrder = id => {
+const updateOrder = (id) => {
     const response = axios.patch(`${API_URL}/order/${id}`, {
         status: 1
     }, {
