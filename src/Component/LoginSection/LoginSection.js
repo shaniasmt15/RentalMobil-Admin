@@ -58,7 +58,7 @@ function LoginSection() {
 
   useEffect(() => {
     isLoggedIn && navigate("/login");
-  });
+  },[]);
 
   return (
     <section id="loginSection">

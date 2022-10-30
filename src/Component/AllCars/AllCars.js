@@ -78,7 +78,7 @@ const AllCars = () => {
             // autocomplete="off"
             // checked
           />
-          <label className="btn btn-secondary" for="option1">
+          <label className="btn btn-secondary" htmlFor="option1">
             All
           </label>
           <input
@@ -90,7 +90,7 @@ const AllCars = () => {
             // autocomplete="off"
             // checked
           />
-          <label className="btn btn-secondary option22" for="option2">
+          <label className="btn btn-secondary option22" htmlFor="option2">
             Large
           </label>
           <input
@@ -102,19 +102,19 @@ const AllCars = () => {
             // autocomplete="off"
             // checked
           />
-          <label className="btn btn-secondary option33" for="option3">
+          <label className="btn btn-secondary option33" htmlFor="option3">
             Medium
           </label>
           <input
             type="radio"
-            class="btn-check"
+            className="btn-check"
             value='small'
             name="category"
             id="option4"
             // autocomplete="off"
             // checked
           />
-          <label className="btn btn-secondary option44" for="option4">
+          <label className="btn btn-secondary option44" htmlFor="option4">
             Small
           </label>
           <input
@@ -126,7 +126,7 @@ const AllCars = () => {
             // autocomplete="off"
             // checked
           />
-          <label class="btn btn-secondary option5" for="option5">
+          <label className="btn btn-secondary option5" htmlFor="option5">
             4 - 6 People
           </label>
         </div>
