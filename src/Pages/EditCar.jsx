@@ -1,10 +1,16 @@
-import React from 'react'
-import EditCarSection from '../Component/EditCarSection/EditCarSection'
+import React, { Fragment } from 'react'
+import EditCarButton from '../Component/EditCarSection/EditCarButton'
+import EditCarSection from '../Component/EditCarSection/EditCarForm'
+import Header from '../Component/Header/Header'
 
 
 const EditCar = () => {
   return (
-   <EditCarSection/>
+    <Fragment>
+    <Header/>
+    <EditCarSection />
+    <EditCarButton/>
+    </Fragment>
   )
 }
 
